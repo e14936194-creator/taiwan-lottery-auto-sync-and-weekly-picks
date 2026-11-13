@@ -34,6 +34,19 @@ python3 -m unittest discover -s tests
 
 ---
 
+## 分享給朋友使用（GitHub Pages 網頁版）
+
+本專案已內建純靜態網頁介面（`docs/index.html` + `docs/data.json`），手機或電腦打開網頁即可查看最新開獎、歷史冷熱門與卡方檢定，並可各自按按鈕抽出不重複的專屬號碼。
+
+1. 若 Repo 目前是 Private，先到 **Settings → General → Danger Zone** 改為 **Public**（GitHub 免費帳號需 Public Repo 才能免費開啟 GitHub Pages）。
+2. 到 **Settings → Pages → Build and deployment**：
+   - **Source**：選 `Deploy from a branch`
+   - **Branch**：選 `main`，資料夾選 `/docs` → 按 **Save**
+3. 等待約 1 分鐘後，即可分享你的專屬網站網址給朋友：
+   `https://<你的GitHub帳號>.github.io/<你的Repo名稱>/`
+
+---
+
 ## 自動化排程設定（二擇一或併用）
 
 ### 方式 A：GitHub Actions 雲端免費全自動（推薦）

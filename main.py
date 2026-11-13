@@ -12,11 +12,13 @@ from lottery.notifier import send_email_if_configured, send_webhook_if_configure
 from lottery.recommender import build_weekly_recommendations
 from lottery.report import render_full_report
 from lottery.stats import analyze_game
+from lottery.web_export import write_web_data
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_DB = PROJECT_ROOT / "data" / "lottery.db"
 DEFAULT_REPORT = PROJECT_ROOT / "reports" / "latest_report.md"
+DEFAULT_WEB_DATA = PROJECT_ROOT / "docs" / "data.json"
 TZ_TAIPEI = timezone(timedelta(hours=8))
 
 
@@ -41,14 +43,16 @@ def cmd_sync(db_path: Path, full: bool = False, export_csv_files: bool = True) -
 def cmd_report(
     db_path: Path,
     report_path: Path,
+    web_data_path: Path | None = DEFAULT_WEB_DATA,
     anti_popular_count: int = 3,
     statistical_count: int = 2,
     recent_window: int = 100,
 ) -> str:
-    """Analyze stored draws, generate recommendations, and write Markdown report."""
+    """Analyze stored draws, generate recommendations, and write Markdown + web JSON."""
     conn = connect_db(db_path)
     try:
         sections = []
+        web_entries = []
         for game in GAME_CONFIGS:
             draws = load_draws(conn, game)
             if not draws:
@@ -60,12 +64,15 @@ def cmd_report(
                 statistical_count=statistical_count,
             )
             sections.append((stats, tickets))
+            web_entries.append((stats, tickets, draws))
     finally:
         conn.close()
 
     report_md = render_full_report(sections)
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(report_md, encoding="utf-8")
+    if web_data_path is not None:
+        write_web_data(web_entries, web_data_path)
     return report_md
 
 
@@ -80,6 +87,7 @@ def main() -> None:
     )
     parser.add_argument("--db", type=Path, default=DEFAULT_DB, help="SQLite 資料庫路徑")
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT, help="Markdown 報告輸出路徑")
+    parser.add_argument("--web-data", type=Path, default=DEFAULT_WEB_DATA, help="GitHub Pages JSON 輸出路徑")
     parser.add_argument("--full", action="store_true", help="強制全量重新抓取歷史資料")
     parser.add_argument("--anti-popular", type=int, default=3, help="每種彩券產出的避撞號組數")
     parser.add_argument("--statistical", type=int, default=2, help="每種彩券產出的統計權重組數")
@@ -95,6 +103,7 @@ def main() -> None:
         report_md = cmd_report(
             db_path=args.db,
             report_path=args.report,
+            web_data_path=args.web_data,
             anti_popular_count=args.anti_popular,
             statistical_count=args.statistical,
             recent_window=args.recent_window,

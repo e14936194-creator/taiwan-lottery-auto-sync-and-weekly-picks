@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>台灣彩券歷史開獎統計 & 專屬選號工具</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #18212f;
+      --muted: #5c687a;
+      --border: #e3e8f0;
+      --accent: #0f62fe;
+      --accent-soft: #edf4ff;
+      --lotto-ball: linear-gradient(145deg, #ffd447, #f59e0b);
+      --lotto-text: #3a2300;
+      --super-ball: linear-gradient(145deg, #34d399, #059669);
+      --super-text: #042f22;
+      --special-ball: linear-gradient(145deg, #fb7185, #e11d48);
+      --special-text: #ffffff;
+      --ok-bg: #ecfdf3;
+      --ok-fg: #067647;
+      --warn-bg: #fffaeb;
+      --warn-fg: #b54708;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px 16px 48px;
+    }
+    header {
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 1.55rem;
+      letter-spacing: -0.01em;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .disclaimer {
+      margin: 14px 0 18px;
+      padding: 12px 14px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      color: #78350f;
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(15, 98, 254, 0.22);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+    }
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+    .balls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .ball {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      box-shadow: inset 0 -2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .ball.sm {
+      width: 32px;
+      height: 32px;
+      font-size: 0.86rem;
+    }
+    .ball.lotto { background: var(--lotto-ball); color: var(--lotto-text); }
+    .ball.super { background: var(--super-ball); color: var(--super-text); }
+    .ball.special { background: var(--special-ball); color: var(--special-text); }
+    .plus {
+      font-weight: 700;
+      color: var(--muted);
+      margin: 0 2px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .badge.ok { background: var(--ok-bg); color: var(--ok-fg); }
+    .badge.warn { background: var(--warn-bg); color: var(--warn-fg); }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    select, button.primary, button.secondary {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+    select {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    button.primary {
+      flex: 2;
+      min-width: 180px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.primary:hover { filter: brightness(0.95); }
+    button.secondary {
+      flex: 1;
+      min-width: 130px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button.secondary:hover { background: #f2f4f7; }
+
+    .ticket-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .ticket-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+    }
+    .ticket-idx {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 54px;
+    }
+    .ticket-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      width: 100%;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .stat-box {
+      padding: 12px;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+    }
+    .stat-box h3 {
+      margin: 0 0 8px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pill {
+      font-size: 0.82rem;
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+    .freq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .freq-cell {
+      padding: 6px 4px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.78rem;
+      background: #fff;
+    }
+    .freq-num {
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+    .freq-bar-wrap {
+      height: 5px;
+      background: #eef2f6;
+      border-radius: 99px;
+      margin: 4px 4px 3px;
+      overflow: hidden;
+    }
+    .freq-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+    }
+    .freq-cnt { color: var(--muted); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 9px 6px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 8px;
+    }
+    .toast {
+      margin-left: 8px;
+      font-size: 0.82rem;
+      color: var(--ok-fg);
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>台灣彩券歷史開獎統計 & 專屬選號工具</h1>
+      <div class="subtitle" id="updated-at">資料載入中...</div>
+    </header>
+
+    <div class="disclaimer">
+      <strong>數學提醒：</strong>樂透每一期皆為獨立隨機開獎，過去開獎紀錄<strong>不會提高</strong>任何號碼組合的真實中獎率。
+      「理性避撞號」是在相同中獎機率下避開大眾熱門選號（如 1–31 生日與連號），以降低多人平分頭獎的風險；每位朋友都可在下方按鈕抽出屬於自己的不重複號碼。
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-game="lotto649">大樂透 (6/49)</button>
+      <button class="tab-btn" data-game="super638">威力彩 (6/38 + 1/8)</button>
+    </div>
+
+    <div id="app"></div>
+
+    <footer>
+      資料來源：台灣彩券官方 API ｜ 由 GitHub Actions 每週自動更新
+    </footer>
+  </div>
+
+  <script>
+    let DATA = null;
+    let ACTIVE_GAME = "lotto649";
+    let GENERATED_TICKETS = [];
+
+    function pad2(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function cryptoRandInt(maxExclusive) {
+      const arr = new Uint32Array(1);
+      const limit = Math.floor(0x100000000 / maxExclusive) * maxExclusive;
+      let val;
+      do {
+        crypto.getRandomValues(arr);
+        val = arr[0];
+      } while (val >= limit);
+      return val % maxExclusive;
+    }
+
+    function sampleUniformWithoutReplacement(pool, k) {
+      const copy = pool.slice();
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = cryptoRandInt(i + 1);
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy.slice(0, k).sort((a, b) => a - b);
+    }
+
+    function sampleWeightedIndex(weights) {
+      const total = weights.reduce((a, b) => a + b, 0);
+      const arr = new Uint32Array(1);
+      crypto.getRandomValues(arr);
+      let r = (arr[0] / 0x100000000) * total;
+      for (let i = 0; i < weights.length; i++) {
+        r -= weights[i];
+        if (r <= 0) return i;
+      }
+      return weights.length - 1;
+    }
+
+    function sampleWeightedWithoutReplacement(items, weights, k) {
+      const pool = items.slice();
+      const w = weights.slice();
+      const chosen = [];
+      for (let step = 0; step < k; step++) {
+        const idx = sampleWeightedIndex(w);
+        chosen.push(pool[idx]);
+        pool.splice(idx, 1);
+        w.splice(idx, 1);
+      }
+      return chosen.sort((a, b) => a - b);
+    }
+
+    function passesAntiPopularFilters(nums, mainMax) {
+      if (nums.filter((n) => n <= 31).length >= 5) return false;
+      let bestRun = 1, curRun = 1;
+      for (let i = 1; i < nums.length; i++) {
+        curRun = nums[i] === nums[i - 1] + 1 ? curRun + 1 : 1;
+        if (curRun > bestRun) bestRun = curRun;
+      }
+      if (bestRun >= 3) return false;
+      if (new Set(nums.map((n) => n % 10)).size <= 3) return false;
+      const diffs = new Set();
+      for (let i = 1; i < nums.length; i++) diffs.add(nums[i] - nums[i - 1]);
+      if (diffs.size <= 1) return false;
+      const mid = mainMax / 2.0;
+      const lowCount = nums.filter((n) => n <= mid).length;
+      if (lowCount < 1 || lowCount > 5) return false;
+      return true;
+    }
+
+    function generateTickets(gameObj, strategy, count) {
+      const mainPool = Array.from({ length: gameObj.main_max }, (_, i) => i + 1);
+      const seen = new Set();
+      const tickets = [];
+
+      const maxTotal = Math.max(...gameObj.main_stats.map((s) => s.total_count), 1);
+      const maxRecent = Math.max(...gameObj.main_stats.map((s) => s.recent_count), 1);
+      const maxOverdue = Math.max(...gameObj.main_stats.map((s) => s.overdue_draws), 1);
+      const mainWeights = gameObj.main_stats.map(
+        (s) =>
+          0.5 +
+          0.4 * (s.total_count / maxTotal) +
+          0.35 * (s.recent_count / maxRecent) +
+          0.25 * (s.overdue_draws / maxOverdue)
+      );
+      const spItems = gameObj.special_stats.map((s) => s.number);
+      const maxSp = Math.max(...gameObj.special_stats.map((s) => s.total_count), 1);
+      const spWeights = gameObj.special_stats.map((s) => 0.5 + 0.5 * (s.total_count / maxSp));
+
+      let attempts = 0;
+      while (tickets.length < count && attempts < 4000) {
+        attempts++;
+        let mainNums;
+        let special = null;
+
+        if (strategy === "anti_popular") {
+          mainNums = sampleUniformWithoutReplacement(mainPool, gameObj.main_count);
+          if (!passesAntiPopularFilters(mainNums, gameObj.main_max)) continue;
+          if (gameObj.game === "super638") {
+            special = cryptoRandInt(gameObj.special_max) + 1;
+          }
+        } else if (strategy === "statistical") {
+          mainNums = sampleWeightedWithoutReplacement(mainPool, mainWeights, gameObj.main_count);
+          const odds = mainNums.filter((n) => n % 2 === 1).length;
+          if (odds < 2 || odds > 4) continue;
+          if (gameObj.game === "super638") {
+            special = spItems[sampleWeightedIndex(spWeights)];
+          }
+        } else {
+          mainNums = sampleUniformWithoutReplacement(mainPool, gameObj.main_count);
+          if (gameObj.game === "super638") {
+            special = cryptoRandInt(gameObj.special_max) + 1;
+          }
+        }
+
+        const key = `${mainNums.join(",")}|${special ?? ""}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        tickets.push({ main_numbers: mainNums, special });
+      }
+      return tickets;
+    }
+
+    function renderBalls(mainNumbers, special, gameKey, small = false) {
+      const mainCls = gameKey === "lotto649" ? "lotto" : "super";
+      const smCls = small ? " sm" : "";
+      const mainHtml = mainNumbers
+        .map((n) => `<span class="ball ${mainCls}${smCls}">${pad2(n)}</span>`)
+        .join("");
+      const spHtml =
+        special !== null && special !== undefined
+          ? `<span class="plus">+</span><span class="ball special${smCls}">${pad2(special)}</span>`
+          : "";
+      return `<div class="balls">${mainHtml}${spHtml}</div>`;
+    }
+
+    function formatTicketsForCopy(tickets, gameObj) {
+      return tickets
+        .map((t, i) => {
+          const base = t.main_numbers.map(pad2).join(" ");
+          return t.special !== null && t.special !== undefined
+            ? `第${i + 1}組：${base} + ${gameObj.special_label} ${pad2(t.special)}`
+            : `第${i + 1}組：${base}`;
+        })
+        .join("\n");
+    }
+
+    function renderApp() {
+      if (!DATA) return;
+      const g = DATA.games[ACTIVE_GAME];
+      const latest = g.latest_draw;
+      const chi = g.chi_square;
+      const mainOk = chi.main_pvalue >= 0.05;
+      const spOk = chi.special_pvalue >= 0.05;
+      const maxCount = Math.max(...g.main_stats.map((s) => s.total_count), 1);
+
+      const strategyLabels = {
+        anti_popular: "理性避撞號（均勻隨機＋避開生日/連號，降低平分頭獎風險）",
+        statistical: "統計權重選號（依歷史頻率/近期/遺漏加權＋奇偶平衡，僅供參考）",
+        random: "純均勻隨機（標準隨機抽樣）",
+      };
+
+      const selectedStrategy = document.getElementById("strategy-select")?.value || "anti_popular";
+      const selectedCount = Number(document.getElementById("count-select")?.value || 3);
+      if (GENERATED_TICKETS.length === 0) {
+        GENERATED_TICKETS = generateTickets(g, selectedStrategy, selectedCount);
+      }
+
+      document.getElementById("app").innerHTML = `
+        <section class="card">
+          <h2>
+            <span>最新開獎：第 ${latest.period} 期（${latest.lottery_date}）</span>
+            <span class="badge ${mainOk ? "ok" : "warn"}">
+              主號卡方檢定 p = ${chi.main_pvalue.toFixed(4)}（${mainOk ? "符合均勻隨機" : "統計輕微偏移"}）
+            </span>
+          </h2>
+          <div class="meta-row">
+            <span>涵蓋區間：${g.first_date} ～ ${g.last_date}</span>
+            <span>累積總期數：<strong>${g.total_draws.toLocaleString()}</strong> 期</span>
+            <span>${g.special_label}卡方檢定：p = ${chi.special_pvalue.toFixed(4)} (${spOk ? "均勻" : "輕微偏移"})</span>
+          </div>
+          ${renderBalls(latest.main_numbers, latest.special, g.game)}
+        </section>
+
+        <section class="card">
+          <h2>
+            <span>抽出你的專屬號碼</span>
+            <span id="copy-toast" class="toast"></span>
+          </h2>
+          <div class="controls">
+            <div>
+              <label for="strategy-select">選號策略</label>
+              <select id="strategy-select">
+                <option value="anti_popular" ${selectedStrategy === "anti_popular" ? "selected" : ""}>理性避撞號（推薦）</option>
+                <option value="statistical" ${selectedStrategy === "statistical" ? "selected" : ""}>統計權重選號（娛樂參考）</option>
+                <option value="random" ${selectedStrategy === "random" ? "selected" : ""}>純均勻隨機</option>
+              </select>
+            </div>
+            <div>
+              <label for="count-select">產生組數</label>
+              <select id="count-select">
+                <option value="1" ${selectedCount === 1 ? "selected" : ""}>1 組</option>
+                <option value="3" ${selectedCount === 3 ? "selected" : ""}>3 組</option>
+                <option value="5" ${selectedCount === 5 ? "selected" : ""}>5 組</option>
+              </select>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="primary" id="gen-btn">🎲 產生我的專屬號碼</button>
+            <button class="secondary" id="copy-btn">📋 複製這批號碼</button>
+          </div>
+          <div class="ticket-list" id="generated-list">
+            ${GENERATED_TICKETS.map(
+              (t, idx) => `
+              <div class="ticket-item">
+                <span class="ticket-idx">第 ${idx + 1} 組</span>
+                ${renderBalls(t.main_numbers, t.special, g.game, true)}
+                <div class="ticket-note">${strategyLabels[selectedStrategy]}</div>
+              </div>`
+            ).join("")}
+          </div>
+
+          <details>
+            <summary>查看本週排程預設參考號碼（與所有訪客共用）</summary>
+            <div class="ticket-list">
+              ${g.recommendations
+                .map(
+                  (t, idx) => `
+                <div class="ticket-item">
+                  <span class="ticket-idx">#${idx + 1}</span>
+                  ${renderBalls(t.main_numbers, t.special, g.game, true)}
+                  <div class="ticket-note">${t.strategy_label}</div>
+                </div>`
+                )
+                .join("")}
+            </div>
+          </details>
+        </section>
+
+        <section class="card">
+          <h2>歷史統計排行榜（前 6 名）</h2>
+          <div class="grid-3">
+            <div class="stat-box">
+              <h3>最常開出（熱門號）</h3>
+              <div class="pill-list">
+                ${g.hot_main.map((s) => `<span class="pill">${pad2(s.number)} (${s.total_count}次)</span>`).join("")}
+              </div>
+            </div>
+            <div class="stat-box">
+              <h3>最少開出（冷門號）</h3>
+              <div class="pill-list">
+                ${g.cold_main.map((s) => `<span class="pill">${pad2(s.number)} (${s.total_count}次)</span>`).join("")}
+              </div>
+            </div>
+            <div class="stat-box">
+              <h3>目前最久未開（遺漏期數）</h3>
+              <div class="pill-list">
+                ${g.overdue_main.map((s) => `<span class="pill">${pad2(s.number)} (連${s.overdue_draws}期)</span>`).join("")}
+              </div>
+            </div>
+          </div>
+
+          <details>
+            <summary>展開全部 01–${pad2(g.main_max)} 號歷史出現次數分布</summary>
+            <div class="freq-grid">
+              ${g.main_stats
+                .map((s) => {
+                  const pct = Math.round((s.total_count / maxCount) * 100);
+                  return `
+                  <div class="freq-cell">
+                    <div class="freq-num">${pad2(s.number)}</div>
+                    <div class="freq-bar-wrap"><div class="freq-bar" style="width:${pct}%"></div></div>
+                    <div class="freq-cnt">${s.total_count}</div>
+                  </div>`;
+                })
+                .join("")}
+            </div>
+          </details>
+        </section>
+
+        <section class="card">
+          <h2>最近 10 期開獎紀錄</h2>
+          <div style="overflow-x:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>期別</th>
+                  <th>開獎日期</th>
+                  <th>獎號</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${g.recent_draws
+                  .map(
+                    (d) => `
+                  <tr>
+                    <td>${d.period}</td>
+                    <td>${d.lottery_date}</td>
+                    <td>${renderBalls(d.main_numbers, d.special, g.game, true)}</td>
+                  </tr>`
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      `;
+
+      const regenerate = () => {
+        const strat = document.getElementById("strategy-select").value;
+        const cnt = Number(document.getElementById("count-select").value);
+        GENERATED_TICKETS = generateTickets(g, strat, cnt);
+        renderApp();
+      };
+
+      document.getElementById("gen-btn").addEventListener("click", regenerate);
+      document.getElementById("strategy-select").addEventListener("change", regenerate);
+      document.getElementById("count-select").addEventListener("change", regenerate);
+      document.getElementById("copy-btn").addEventListener("click", async () => {
+        const text = `${g.name_zh} 選號：\n${formatTicketsForCopy(GENERATED_TICKETS, g)}`;
+        try {
+          await navigator.clipboard.writeText(text);
+          document.getElementById("copy-toast").textContent = "已複製！";
+          setTimeout(() => {
+            const el = document.getElementById("copy-toast");
+            if (el) el.textContent = "";
+          }, 2000);
+        } catch {
+          alert(text);
+        }
+      });
+    }
+
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        ACTIVE_GAME = btn.dataset.game;
+        GENERATED_TICKETS = [];
+        renderApp();
+      });
+    });
+
+    fetch(`./data.json?t=${Date.now()}`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((json) => {
+        DATA = json;
+        document.getElementById("updated-at").textContent = `最後資料更新：${json.generated_at}`;
+        renderApp();
+      })
+      .catch((err) => {
+        document.getElementById("app").innerHTML = `<div class="card">無法載入開獎資料 (${err.message})，請確認已執行 <code>python3 main.py run</code> 產生 <code>docs/data.json</code>。</div>`;
+      });
+  </script>
+</body>
+</html>

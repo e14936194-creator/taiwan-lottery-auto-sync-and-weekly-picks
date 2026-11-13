@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import random
 import tempfile
 import unittest
@@ -16,6 +17,7 @@ from lottery.recommender import (
 )
 from lottery.report import render_full_report
 from lottery.stats import analyze_game, chi_square_pvalue
+from lottery.web_export import write_web_data
 
 
 def _make_sample_draws(game: str, count: int = 80) -> list[DrawRecord]:
@@ -124,6 +126,22 @@ class TestLotteryPipeline(unittest.TestCase):
         self.assertIn("大樂透", md)
         self.assertIn("威力彩", md)
         self.assertIn("隨機性卡方檢定", md)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            web_json = Path(tmp) / "data.json"
+            write_web_data(
+                [
+                    (lotto_stats, lotto_tickets, lotto_draws),
+                    (super_stats, super_tickets, super_draws),
+                ],
+                web_json,
+            )
+            payload = json.loads(web_json.read_text(encoding="utf-8"))
+            self.assertIn("lotto649", payload["games"])
+            self.assertIn("super638", payload["games"])
+            self.assertEqual(len(payload["games"]["lotto649"]["recent_draws"]), 10)
+            self.assertEqual(len(payload["games"]["lotto649"]["main_stats"]), 49)
+            self.assertEqual(len(payload["games"]["super638"]["special_stats"]), 8)
 
 
 if __name__ == "__main__":
