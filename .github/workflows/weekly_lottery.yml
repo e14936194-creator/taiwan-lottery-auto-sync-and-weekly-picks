@@ -1,0 +1,48 @@
+name: Weekly Taiwan Lottery Sync & Picks
+
+on:
+  schedule:
+    # 台灣時間 (UTC+8) 每週一、二、四、五 22:00 自動執行 (開獎後更新並產出報告)
+    - cron: "0 14 * * 1,2,4,5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-and-recommend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests
+
+      - name: Sync draws and generate weekly report
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_TO: ${{ secrets.SMTP_TO }}
+          LOTTERY_WEBHOOK_URL: ${{ secrets.LOTTERY_WEBHOOK_URL }}
+        run: python3 main.py run --notify
+
+      - name: Publish report to GitHub Actions Summary
+        run: cat reports/latest_report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit updated database and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lottery.db data/lotto649.csv data/super638.csv reports/latest_report.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update lottery draws and weekly report"
+            git push
+          fi
