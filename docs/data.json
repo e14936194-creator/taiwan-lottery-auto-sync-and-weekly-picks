@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-24 22:50 (UTC+08:00)",
-  "generated_iso": "2026-11-24T22:50:54.548494+08:00",
+  "generated_at": "2026-11-26 22:51 (UTC+08:00)",
+  "generated_iso": "2026-11-26T22:51:56.809373+08:00",
   "games": {
     "lotto649": {
       "game": "lotto649",
@@ -1249,40 +1249,40 @@
           "strategy": "anti_popular",
           "strategy_label": "理性避撞號（均勻隨機＋避開生日連號）",
           "main_numbers": [
-            1,
-            11,
-            37,
-            41,
+            12,
+            20,
+            23,
+            32,
+            44,
+            49
+          ],
+          "special": null,
+          "note": "與所有組合中獎率相同，但避開 1-31 集中與連號，降低頭獎多人平分機率"
+        },
+        {
+          "strategy": "anti_popular",
+          "strategy_label": "理性避撞號（均勻隨機＋避開生日連號）",
+          "main_numbers": [
+            8,
+            13,
+            22,
+            27,
+            44,
+            47
+          ],
+          "special": null,
+          "note": "與所有組合中獎率相同，但避開 1-31 集中與連號，降低頭獎多人平分機率"
+        },
+        {
+          "strategy": "anti_popular",
+          "strategy_label": "理性避撞號（均勻隨機＋避開生日連號）",
+          "main_numbers": [
+            2,
+            13,
+            24,
+            36,
             43,
             48
-          ],
-          "special": null,
-          "note": "與所有組合中獎率相同，但避開 1-31 集中與連號，降低頭獎多人平分機率"
-        },
-        {
-          "strategy": "anti_popular",
-          "strategy_label": "理性避撞號（均勻隨機＋避開生日連號）",
-          "main_numbers": [
-            11,
-            14,
-            28,
-            32,
-            40,
-            46
-          ],
-          "special": null,
-          "note": "與所有組合中獎率相同，但避開 1-31 集中與連號，降低頭獎多人平分機率"
-        },
-        {
-          "strategy": "anti_popular",
-          "strategy_label": "理性避撞號（均勻隨機＋避開生日連號）",
-          "main_numbers": [
-            3,
-            21,
-            23,
-            34,
-            36,
-            47
           ],
           "special": null,
           "note": "與所有組合中獎率相同，但避開 1-31 集中與連號，降低頭獎多人平分機率"
@@ -1291,12 +1291,12 @@
           "strategy": "statistical",
           "strategy_label": "統計權重選號（熱號＋近期＋遺漏加權＋奇偶平衡）",
           "main_numbers": [
-            22,
-            26,
-            27,
-            29,
-            43,
-            47
+            15,
+            30,
+            35,
+            39,
+            40,
+            44
           ],
           "special": null,
           "note": "依歷史頻率與奇偶平衡抽樣（僅供統計偏好參考，實際中獎率與機選相同）"
@@ -1305,12 +1305,12 @@
           "strategy": "statistical",
           "strategy_label": "統計權重選號（熱號＋近期＋遺漏加權＋奇偶平衡）",
           "main_numbers": [
-            6,
-            18,
-            27,
-            30,
-            31,
-            33
+            5,
+            22,
+            28,
+            32,
+            38,
+            49
           ],
           "special": null,
           "note": "依歷史頻率與奇偶平衡抽樣（僅供統計偏好參考，實際中獎率與機選相同）"
@@ -1324,36 +1324,62 @@
       "main_count": 6,
       "special_max": 8,
       "special_label": "第二區",
-      "total_draws": 1966,
+      "total_draws": 1967,
       "first_date": "2008-01-24",
-      "last_date": "2026-11-23",
+      "last_date": "2026-11-26",
       "latest_draw": {
-        "period": 115000094,
-        "lottery_date": "2026-11-23",
+        "period": 115000095,
+        "lottery_date": "2026-11-26",
         "main_numbers": [
-          2,
+          1,
           14,
-          16,
-          24,
-          26,
-          29
+          18,
+          21,
+          31,
+          35
         ],
-        "special": 7,
+        "special": 1,
         "appear_order": [
-          26,
+          18,
+          21,
           14,
-          2,
-          24,
-          29,
-          16,
-          7
+          1,
+          35,
+          31,
+          1
         ],
-        "sell_amount": 58392400,
-        "total_amount": 67472888,
+        "sell_amount": 53800400,
+        "total_amount": 85937607,
         "jackpot_winners": 0,
         "jackpot_per_prize": 0
       },
       "recent_draws": [
+        {
+          "period": 115000095,
+          "lottery_date": "2026-11-26",
+          "main_numbers": [
+            1,
+            14,
+            18,
+            21,
+            31,
+            35
+          ],
+          "special": 1,
+          "appear_order": [
+            18,
+            21,
+            14,
+            1,
+            35,
+            31,
+            1
+          ],
+          "sell_amount": 53800400,
+          "total_amount": 85937607,
+          "jackpot_winners": 0,
+          "jackpot_per_prize": 0
+        },
         {
           "period": 115000094,
           "lottery_date": "2026-11-23",
@@ -1587,88 +1613,62 @@
           "total_amount": 227843626,
           "jackpot_winners": 0,
           "jackpot_per_prize": 0
-        },
-        {
-          "period": 115000085,
-          "lottery_date": "2026-10-22",
-          "main_numbers": [
-            1,
-            9,
-            10,
-            21,
-            22,
-            31
-          ],
-          "special": 6,
-          "appear_order": [
-            21,
-            31,
-            10,
-            1,
-            22,
-            9,
-            6
-          ],
-          "sell_amount": 52081300,
-          "total_amount": 236589902,
-          "jackpot_winners": 0,
-          "jackpot_per_prize": 0
         }
       ],
       "chi_square": {
-        "main_chi2": 39.4278,
-        "main_pvalue": 0.361872,
-        "special_chi2": 8.6246,
-        "special_pvalue": 0.280742
+        "main_chi2": 39.445,
+        "main_pvalue": 0.361156,
+        "special_chi2": 8.5201,
+        "special_pvalue": 0.288971
       },
       "hot_main": [
         {
           "number": 24,
           "total_count": 345,
           "recent_count": 15,
-          "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": 2.1387153877185927
+          "overdue_draws": 1,
+          "expected_count": 310.57894736842104,
+          "z_score": 2.128408328591603
         },
         {
           "number": 3,
           "total_count": 336,
           "recent_count": 13,
-          "overdue_draws": 2,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.5820634374904659
+          "overdue_draws": 3,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.571897894051597
         },
         {
           "number": 38,
           "total_count": 336,
           "recent_count": 21,
-          "overdue_draws": 13,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.5820634374904659
+          "overdue_draws": 14,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.571897894051597
         },
         {
           "number": 14,
-          "total_count": 331,
-          "recent_count": 20,
+          "total_count": 332,
+          "recent_count": 21,
           "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.272812354030395
+          "expected_count": 310.57894736842104,
+          "z_score": 1.3245599231449277
         },
         {
           "number": 4,
           "total_count": 329,
           "recent_count": 14,
-          "overdue_draws": 6,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.149111920646367
+          "overdue_draws": 7,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.1390564449649256
         },
         {
           "number": 7,
           "total_count": 327,
           "recent_count": 18,
-          "overdue_draws": 2,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.0254114872623386
+          "overdue_draws": 3,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.015387459511591
         }
       ],
       "cold_main": [
@@ -1676,49 +1676,49 @@
           "number": 9,
           "total_count": 274,
           "recent_count": 20,
-          "overdue_draws": 3,
-          "expected_count": 310.42105263157896,
-          "z_score": -2.2526499974144096
+          "overdue_draws": 4,
+          "expected_count": 310.57894736842104,
+          "z_score": -2.261840655001779
         },
         {
           "number": 5,
           "total_count": 277,
-          "recent_count": 9,
-          "overdue_draws": 12,
-          "expected_count": 310.42105263157896,
-          "z_score": -2.0670993473383676
+          "recent_count": 8,
+          "overdue_draws": 13,
+          "expected_count": 310.57894736842104,
+          "z_score": -2.076337176821777
         },
         {
           "number": 32,
           "total_count": 282,
           "recent_count": 14,
-          "overdue_draws": 8,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.7578482638782968
+          "overdue_draws": 9,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.76716471318844
         },
         {
           "number": 34,
           "total_count": 284,
           "recent_count": 19,
-          "overdue_draws": 16,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.6341478304942685
+          "overdue_draws": 17,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.6434957277351052
         },
         {
           "number": 2,
           "total_count": 288,
           "recent_count": 14,
-          "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.3867469637262122
+          "overdue_draws": 1,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.3961577568284358
         },
         {
           "number": 30,
           "total_count": 292,
           "recent_count": 10,
-          "overdue_draws": 1,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.1393460969581557
+          "overdue_draws": 2,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.1488197859217664
         }
       ],
       "overdue_main": [
@@ -1726,421 +1726,421 @@
           "number": 34,
           "total_count": 284,
           "recent_count": 19,
-          "overdue_draws": 16,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.6341478304942685
+          "overdue_draws": 17,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.6434957277351052
         },
         {
           "number": 17,
           "total_count": 313,
           "recent_count": 17,
-          "overdue_draws": 14,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.15950845357414095
+          "overdue_draws": 15,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.14970456133824803
         },
         {
           "number": 38,
           "total_count": 336,
           "recent_count": 21,
-          "overdue_draws": 13,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.5820634374904659
+          "overdue_draws": 14,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.571897894051597
         },
         {
           "number": 5,
           "total_count": 277,
-          "recent_count": 9,
-          "overdue_draws": 12,
-          "expected_count": 310.42105263157896,
-          "z_score": -2.0670993473383676
+          "recent_count": 8,
+          "overdue_draws": 13,
+          "expected_count": 310.57894736842104,
+          "z_score": -2.076337176821777
         },
         {
           "number": 10,
           "total_count": 314,
           "recent_count": 14,
-          "overdue_draws": 9,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.22135867026615508
+          "overdue_draws": 10,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.21153905406491538
         },
         {
           "number": 22,
           "total_count": 323,
-          "recent_count": 18,
-          "overdue_draws": 9,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.7780106204942822
+          "recent_count": 17,
+          "overdue_draws": 10,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.7680494886049215
         }
       ],
       "main_stats": [
         {
           "number": 1,
-          "total_count": 318,
-          "recent_count": 14,
-          "overdue_draws": 1,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.4687595370342115
+          "total_count": 319,
+          "recent_count": 15,
+          "overdue_draws": 0,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.5207115176982521
         },
         {
           "number": 2,
           "total_count": 288,
           "recent_count": 14,
-          "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.3867469637262122
+          "overdue_draws": 1,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.3961577568284358
         },
         {
           "number": 3,
           "total_count": 336,
           "recent_count": 13,
-          "overdue_draws": 2,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.5820634374904659
+          "overdue_draws": 3,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.571897894051597
         },
         {
           "number": 4,
           "total_count": 329,
           "recent_count": 14,
-          "overdue_draws": 6,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.149111920646367
+          "overdue_draws": 7,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.1390564449649256
         },
         {
           "number": 5,
           "total_count": 277,
-          "recent_count": 9,
-          "overdue_draws": 12,
-          "expected_count": 310.42105263157896,
-          "z_score": -2.0670993473383676
+          "recent_count": 8,
+          "overdue_draws": 13,
+          "expected_count": 310.57894736842104,
+          "z_score": -2.076337176821777
         },
         {
           "number": 6,
           "total_count": 319,
-          "recent_count": 19,
-          "overdue_draws": 4,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.5306097537262257
+          "recent_count": 18,
+          "overdue_draws": 5,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.5207115176982521
         },
         {
           "number": 7,
           "total_count": 327,
           "recent_count": 18,
-          "overdue_draws": 2,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.0254114872623386
+          "overdue_draws": 3,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.015387459511591
         },
         {
           "number": 8,
           "total_count": 318,
           "recent_count": 16,
-          "overdue_draws": 2,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.4687595370342115
+          "overdue_draws": 3,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.4588770249715848
         },
         {
           "number": 9,
           "total_count": 274,
           "recent_count": 20,
-          "overdue_draws": 3,
-          "expected_count": 310.42105263157896,
-          "z_score": -2.2526499974144096
+          "overdue_draws": 4,
+          "expected_count": 310.57894736842104,
+          "z_score": -2.261840655001779
         },
         {
           "number": 10,
           "total_count": 314,
           "recent_count": 14,
-          "overdue_draws": 9,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.22135867026615508
+          "overdue_draws": 10,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.21153905406491538
         },
         {
           "number": 11,
           "total_count": 311,
-          "recent_count": 17,
-          "overdue_draws": 7,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.0358080201901127
+          "recent_count": 16,
+          "overdue_draws": 8,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.02603557588491331
         },
         {
           "number": 12,
           "total_count": 302,
           "recent_count": 11,
-          "overdue_draws": 1,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.5208439300380144
+          "overdue_draws": 2,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.5304748586550929
         },
         {
           "number": 13,
           "total_count": 298,
           "recent_count": 13,
-          "overdue_draws": 1,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.7682447968060709
+          "overdue_draws": 2,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.7778128295617622
         },
         {
           "number": 14,
-          "total_count": 331,
-          "recent_count": 20,
+          "total_count": 332,
+          "recent_count": 21,
           "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.272812354030395
+          "expected_count": 310.57894736842104,
+          "z_score": 1.3245599231449277
         },
         {
           "number": 15,
           "total_count": 326,
-          "recent_count": 15,
-          "overdue_draws": 3,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.9635612705703245
+          "recent_count": 14,
+          "overdue_draws": 4,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.9535529667849236
         },
         {
           "number": 16,
           "total_count": 319,
           "recent_count": 13,
-          "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.5306097537262257
+          "overdue_draws": 1,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.5207115176982521
         },
         {
           "number": 17,
           "total_count": 313,
           "recent_count": 17,
-          "overdue_draws": 14,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.15950845357414095
+          "overdue_draws": 15,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.14970456133824803
         },
         {
           "number": 18,
-          "total_count": 298,
-          "recent_count": 11,
-          "overdue_draws": 1,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.7682447968060709
+          "total_count": 299,
+          "recent_count": 12,
+          "overdue_draws": 0,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.7159783368350949
         },
         {
           "number": 19,
           "total_count": 324,
           "recent_count": 19,
-          "overdue_draws": 5,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.8398608371862963
+          "overdue_draws": 6,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.8298839813315889
         },
         {
           "number": 20,
           "total_count": 306,
           "recent_count": 6,
-          "overdue_draws": 4,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.27344306326995793
+          "overdue_draws": 5,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.28313688774842344
         },
         {
           "number": 21,
-          "total_count": 298,
-          "recent_count": 15,
-          "overdue_draws": 6,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.7682447968060709
+          "total_count": 299,
+          "recent_count": 16,
+          "overdue_draws": 0,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.7159783368350949
         },
         {
           "number": 22,
           "total_count": 323,
-          "recent_count": 18,
-          "overdue_draws": 9,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.7780106204942822
+          "recent_count": 17,
+          "overdue_draws": 10,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.7680494886049215
         },
         {
           "number": 23,
           "total_count": 306,
           "recent_count": 16,
-          "overdue_draws": 3,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.27344306326995793
+          "overdue_draws": 4,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.28313688774842344
         },
         {
           "number": 24,
           "total_count": 345,
           "recent_count": 15,
-          "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": 2.1387153877185927
+          "overdue_draws": 1,
+          "expected_count": 310.57894736842104,
+          "z_score": 2.128408328591603
         },
         {
           "number": 25,
           "total_count": 316,
           "recent_count": 19,
-          "overdue_draws": 3,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.34505910365018333
+          "overdue_draws": 4,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.33520803951825007
         },
         {
           "number": 26,
           "total_count": 322,
           "recent_count": 17,
-          "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.7161604038022681
+          "overdue_draws": 1,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.7062149958782542
         },
         {
           "number": 27,
           "total_count": 307,
           "recent_count": 15,
-          "overdue_draws": 4,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.21159284657794378
+          "overdue_draws": 5,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.2213023950217561
         },
         {
           "number": 28,
           "total_count": 297,
           "recent_count": 17,
-          "overdue_draws": 2,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.830095013498085
+          "overdue_draws": 3,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.8396473222884296
         },
         {
           "number": 29,
           "total_count": 324,
           "recent_count": 23,
-          "overdue_draws": 0,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.8398608371862963
+          "overdue_draws": 1,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.8298839813315889
         },
         {
           "number": 30,
           "total_count": 292,
           "recent_count": 10,
-          "overdue_draws": 1,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.1393460969581557
+          "overdue_draws": 2,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.1488197859217664
         },
         {
           "number": 31,
-          "total_count": 309,
-          "recent_count": 19,
-          "overdue_draws": 8,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.08789241319391554
+          "total_count": 310,
+          "recent_count": 20,
+          "overdue_draws": 0,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.03579891684175404
         },
         {
           "number": 32,
           "total_count": 282,
           "recent_count": 14,
-          "overdue_draws": 8,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.7578482638782968
+          "overdue_draws": 9,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.76716471318844
         },
         {
           "number": 33,
           "total_count": 295,
           "recent_count": 18,
-          "overdue_draws": 1,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.9537954468821133
+          "overdue_draws": 2,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.9633163077417644
         },
         {
           "number": 34,
           "total_count": 284,
           "recent_count": 19,
-          "overdue_draws": 16,
-          "expected_count": 310.42105263157896,
-          "z_score": -1.6341478304942685
+          "overdue_draws": 17,
+          "expected_count": 310.57894736842104,
+          "z_score": -1.6434957277351052
         },
         {
           "number": 35,
-          "total_count": 311,
-          "recent_count": 21,
-          "overdue_draws": 3,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.0358080201901127
+          "total_count": 312,
+          "recent_count": 22,
+          "overdue_draws": 0,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.08787006861158066
         },
         {
           "number": 36,
           "total_count": 307,
           "recent_count": 13,
-          "overdue_draws": 4,
-          "expected_count": 310.42105263157896,
-          "z_score": -0.21159284657794378
+          "overdue_draws": 5,
+          "expected_count": 310.57894736842104,
+          "z_score": -0.2213023950217561
         },
         {
           "number": 37,
           "total_count": 314,
-          "recent_count": 17,
-          "overdue_draws": 5,
-          "expected_count": 310.42105263157896,
-          "z_score": 0.22135867026615508
+          "recent_count": 16,
+          "overdue_draws": 6,
+          "expected_count": 310.57894736842104,
+          "z_score": 0.21153905406491538
         },
         {
           "number": 38,
           "total_count": 336,
           "recent_count": 21,
-          "overdue_draws": 13,
-          "expected_count": 310.42105263157896,
-          "z_score": 1.5820634374904659
+          "overdue_draws": 14,
+          "expected_count": 310.57894736842104,
+          "z_score": 1.571897894051597
         }
       ],
       "special_stats": [
         {
           "number": 1,
-          "total_count": 233,
-          "recent_count": 11,
-          "overdue_draws": 7,
-          "expected_count": 245.75,
-          "z_score": -0.8694795961966538
+          "total_count": 234,
+          "recent_count": 12,
+          "overdue_draws": 0,
+          "expected_count": 245.875,
+          "z_score": -0.8096035527975699
         },
         {
           "number": 2,
           "total_count": 279,
           "recent_count": 15,
-          "overdue_draws": 2,
-          "expected_count": 245.75,
-          "z_score": 2.2674663979246072
+          "overdue_draws": 3,
+          "expected_count": 245.875,
+          "z_score": 2.2583678051721687
         },
         {
           "number": 3,
           "total_count": 245,
           "recent_count": 14,
-          "overdue_draws": 1,
-          "expected_count": 245.75,
-          "z_score": -0.05114585859980317
+          "overdue_draws": 2,
+          "expected_count": 245.875,
+          "z_score": -0.059654998627189364
         },
         {
           "number": 4,
           "total_count": 250,
           "recent_count": 8,
-          "overdue_draws": 31,
-          "expected_count": 245.75,
-          "z_score": 0.28982653206555126
+          "overdue_draws": 32,
+          "expected_count": 245.875,
+          "z_score": 0.2812307078138927
         },
         {
           "number": 5,
           "total_count": 262,
           "recent_count": 14,
-          "overdue_draws": 13,
-          "expected_count": 245.75,
-          "z_score": 1.108160269662402
+          "overdue_draws": 14,
+          "expected_count": 245.875,
+          "z_score": 1.0993564032724896
         },
         {
           "number": 6,
           "total_count": 228,
           "recent_count": 14,
-          "overdue_draws": 5,
-          "expected_count": 245.75,
-          "z_score": -1.2104519868620083
+          "overdue_draws": 6,
+          "expected_count": 245.875,
+          "z_score": -1.2186664005268684
         },
         {
           "number": 7,
           "total_count": 235,
-          "recent_count": 12,
-          "overdue_draws": 0,
-          "expected_count": 245.75,
-          "z_score": -0.733090639930512
+          "recent_count": 11,
+          "overdue_draws": 1,
+          "expected_count": 245.875,
+          "z_score": -0.7414264115093535
         },
         {
           "number": 8,
           "total_count": 234,
           "recent_count": 12,
-          "overdue_draws": 10,
-          "expected_count": 245.75,
-          "z_score": -0.8012851180635829
+          "overdue_draws": 11,
+          "expected_count": 245.875,
+          "z_score": -0.8096035527975699
         }
       ],
       "recommendations": [
@@ -2148,28 +2148,28 @@
           "strategy": "anti_popular",
           "strategy_label": "理性避撞號（均勻隨機＋避開生日連號）",
           "main_numbers": [
-            11,
-            18,
-            19,
-            26,
-            37,
+            10,
+            14,
+            17,
+            29,
+            35,
             38
           ],
-          "special": 6,
+          "special": 3,
           "note": "與所有組合中獎率相同，但避開 1-31 集中與連號，降低頭獎多人平分機率"
         },
         {
           "strategy": "anti_popular",
           "strategy_label": "理性避撞號（均勻隨機＋避開生日連號）",
           "main_numbers": [
-            2,
-            23,
-            25,
-            34,
-            36,
-            37
+            10,
+            17,
+            19,
+            33,
+            35,
+            38
           ],
-          "special": 7,
+          "special": 2,
           "note": "與所有組合中獎率相同，但避開 1-31 集中與連號，降低頭獎多人平分機率"
         },
         {
@@ -2177,11 +2177,11 @@
           "strategy_label": "理性避撞號（均勻隨機＋避開生日連號）",
           "main_numbers": [
             12,
-            25,
-            29,
-            30,
-            35,
-            38
+            13,
+            17,
+            24,
+            32,
+            34
           ],
           "special": 6,
           "note": "與所有組合中獎率相同，但避開 1-31 集中與連號，降低頭獎多人平分機率"
@@ -2190,28 +2190,28 @@
           "strategy": "statistical",
           "strategy_label": "統計權重選號（熱號＋近期＋遺漏加權＋奇偶平衡）",
           "main_numbers": [
-            5,
-            19,
-            20,
-            29,
-            35,
-            38
+            1,
+            12,
+            24,
+            28,
+            31,
+            34
           ],
-          "special": 5,
+          "special": 2,
           "note": "依歷史頻率與奇偶平衡抽樣（僅供統計偏好參考，實際中獎率與機選相同）"
         },
         {
           "strategy": "statistical",
           "strategy_label": "統計權重選號（熱號＋近期＋遺漏加權＋奇偶平衡）",
           "main_numbers": [
-            1,
-            20,
-            28,
-            32,
+            8,
+            21,
+            23,
+            25,
             34,
-            35
+            37
           ],
-          "special": 4,
+          "special": 5,
           "note": "依歷史頻率與奇偶平衡抽樣（僅供統計偏好參考，實際中獎率與機選相同）"
         }
       ]
